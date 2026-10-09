@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Portfólio de Emanueli de Souza: desenvolvimento web, dados e gestão de tecnologia.">
+<title>Emanueli de Souza — Tecnologia & Sistemas</title>
+<style>
+:root {
+  --bg:#121512;
+  --surface:#1a1e1a;
+  --surface2:#222822;
+  --text:#f3f1e9;
+  --muted:#a6ada4;
+  --accent:#c6d5a0;
+  --line:#343b33;
+  --radius:8px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit}
+button,a{ -webkit-tap-highlight-color:transparent}
+button{cursor:pointer}
+.wrap{width:min(1120px,90%);margin:auto}
+header{position:sticky;top:0;z-index:10;background:rgba(18,21,18,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav{min-height:68px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo{font-weight:800;letter-spacing:1px}
+.logo span,.accent{color:var(--accent)}
+.navlinks{display:flex;gap:22px;font-size:13px;color:var(--muted)}
+.navlinks a:hover,.textlink:hover{color:var(--accent)}
+.hero{padding:100px 0 88px}
+.kicker{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--accent)}
+h1{font-size:clamp(42px,8vw,86px);letter-spacing:-4px;line-height:1.02;max-width:900px;margin:22px 0}
+h1 span{color:var(--accent)}
+.lead{font-size:18px;color:var(--muted);max-width:640px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;justify-content:center;align-items:center;padding:12px 17px;border:1px solid var(--line);border-radius:5px;background:transparent;color:var(--text);font-size:13px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#151a13;font-weight:700}
+.btn:hover{border-color:var(--accent)}
+.meta{margin-top:42px;padding-top:20px;border-top:1px solid var(--line);display:flex;gap:32px;flex-wrap:wrap;color:var(--muted);font-size:12px}
+section{padding:65px 0;border-top:1px solid var(--line)}
+.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:30px}
+h2{font-size:clamp(29px,4vw,44px);letter-spacing:-1.5px;line-height:1.1;margin:8px 0}
+.sub{color:var(--muted);max-width:620px;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.project{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);padding:25px;display:flex;flex-direction:column;min-height:255px;transition:border-color .2s,transform .2s}
+.project:hover{border-color:#77876a;transform:translateY(-2px)}
+.projecttop{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.index{font-size:11px;letter-spacing:1px;color:var(--accent)}
+.status{font-size:10px;color:var(--muted);border:1px solid var(--line);padding:4px 7px;border-radius:3px}
+h3{font-size:22px;letter-spacing:-.5px;margin:17px 0 7px}
+.project p{font-size:13px;color:var(--muted);margin:0 0 18px}
+.tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto;padding-top:8px}
+.tag{font-size:10px;color:#cbd1c5;border:1px solid var(--line);padding:4px 7px;border-radius:3px}
+.project button{margin-top:20px;align-self:flex-start;border:0;background:none;padding:0;color:var(--accent);font-size:13px}
+.demo{display:none;margin-top:24px;padding-top:24px;border-top:1px solid var(--line)}
+.demo.open{display:block}
+.demohead{font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:15px}
+.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:11px;color:var(--muted)}
+.field input,.field select{width:100%;min-width:0;background:#111410;border:1px solid var(--line);border-radius:4px;color:var(--text);padding:10px;font-size:13px}
+.field.full{grid-column:1/-1}
+.demo .btn{margin-top:13px}
+.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:18px 0}
+.metric{padding:13px;background:#111410;border:1px solid var(--line);border-radius:5px;min-width:0}
+.metric small{display:block;color:var(--muted);font-size:10px}
+.metric strong{display:block;margin-top:5px;font-size:17px;overflow-wrap:anywhere}
+.tablewrap{overflow-x:auto;margin-top:16px}
+table{width:100%;border-collapse:collapse;font-size:12px;min-width:400px}
+th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-weight:500}
+td select{max-width:135px;background:#111410;color:var(--text);border:1px solid var(--line);padding:6px;border-radius:3px}
+.remove{background:none;border:0;color:#e6a7a0}
+.notice{font-size:11px;color:var(--muted);margin-top:12px}
+.skills{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
+.skill{padding:10px 13px;border:1px solid var(--line);border-radius:4px;font-size:12px}
+.about{max-width:720px}
+.about p{color:var(--muted);font-size:15px}
+.contact{padding:30px;border:1px solid var(--line);background:var(--surface);border-radius:var(--radius)}
+footer{padding:24px 0;color:var(--muted);font-size:11px}
+footer .wrap{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+@media(max-width:650px){
+ .hero{padding:68px 0 55px}
+ h1{letter-spacing:-2px}
+ .navlinks{gap:12px;font-size:11px}
+ .grid{grid-template-columns:1fr}
+ .sectionhead{display:block}
+ .formgrid{grid-template-columns:1fr}
+ .field.full{grid-column:auto}
+ .metrics{grid-template-columns:1fr}
+ .metric{display:flex;justify-content:space-between;align-items:center;gap:10px}
+ .metric strong{font-size:15px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+ <nav class="wrap">
+  <a class="logo" href="#inicio">EMANUELI<span>.</span></a>
+  <div class="navlinks">
+   <a href="#projetos">Projetos</a>
+   <a href="#competencias">Competências</a>
+   <a href="#sobre">Sobre</a>
+   <a href="#contato">Contato</a>
+  </div>
+ </nav>
+</header>
+
+<main>
+<section class="hero" id="inicio" style="border-top:0">
+ <div class="wrap">
+  <div class="kicker">Gestão de TI · Desenvolvimento · Dados</div>
+  <h1>Sistemas bem pensados.<br><span>Problemas bem resolvidos.</span></h1>
+  <p class="lead">Sou Emanueli de Souza, estudante de Gestão da Tecnologia da Informação com formação técnica em Administração. Desenvolvo projetos que conectam processos de negócio, dados e experiências digitais.</p>
+  <div class="actions">
+   <a class="btn primary" href="#projetos">Explorar projetos ↗</a>
+   <a class="btn" href="#sobre">Conhecer minha trajetória</a>
+  </div>
+  <div class="meta">
+   <span>01 — Desenvolvimento web</span>
+   <span>02 — Análise de dados</span>
+   <span>03 — Sistemas de gestão</span>
+  </div>
+ </div>
+</section>
+
+<section id="projetos">
+ <div class="wrap">
+  <div class="sectionhead">
+   <div>
+    <div class="kicker">Laboratório de soluções</div>
+    <h2>Projetos e demonstrações</h2>
+   </div>
+   <p class="sub">Aplicações autorais para explorar funcionalidades, decisões de interface e regras de negócio. Os dados de demonstração são fictícios.</p>
+  </div>
+
+  <div class="grid">
+   <article class="project">
+    <div class="projecttop"><span class="index">01 / COMERCIAL</span><span class="status">Demo interativa</span></div>
+    <h3>CRM de oportunidades</h3>
+    <p>Organização de oportunidades comerciais por etapa, com cadastro, filtros e indicadores calculados a partir dos registros.</p>
+    <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+    <button type="button" onclick="toggleDemo('crm',this)">Abrir demonstração ↗</button>
+    <div class="demo" id="crm">
+     <div class="demohead">Ambiente de demonstração · CRM</div>
+     <div class="formgrid">
+      <div class="field"><label for="client">Nome da oportunidade</label><input id="client" placeholder="Ex.: Projeto de automação"></div>
+      <div class="field"><label for="company">Empresa</label><input id="company" placeholder="Ex.: Empresa exemplo"></div>
+      <div class="field"><label for="value">Valor estimado (R$)</label><input id="value" type="number" min="0" step="0.01" placeholder="5000"></div>
+      <div class="field"><label for="stage">Etapa comercial</label><select id="stage"><option>Prospecção</option><option>Qualificação</option><option>Proposta</option><option>Negociação</option><option>Fechado</option></select></div>
+     </div>
+     <button class="btn primary" type="button" onclick="addOpportunity()">+ Adicionar oportunidade</button>
+     <div class="metrics">
+      <div class="metric"><small>Oportunidades</small><strong id="count">3</strong></div>
+      <div class="metric"><small>Valor do pipeline</small><strong id="pipeline">R$ 21.500,00</strong></div>
+      <div class="metric"><small>Fechadas</small><strong id="won">R$ 4.500,00</strong></div>
+     </div>
+     <div class="field"><label for="filter">Filtrar por etapa</label><select id="filter" onchange="renderCRM()"><option value="">Todas as etapas</option><option>Prospecção</option><option>Qualificação</option><option>Proposta</option><option>Negociação</option><option>Fechado</option></select></div>
+     <div class="tablewrap">
+      <table>
+       <thead><tr><th>Oportunidade</th><th>Empresa</th><th>Valor</th><th>Etapa</th><th>Ação</th></tr></thead>
+       <tbody id="crmRows"></tbody>
+      </table>
+     </div>
+     <p class="notice">Dados fictícios. As alterações desta demonstração ficam na memória da página e podem ser perdidas ao recarregar.</p>
+    </div>
+   </article>
+
+   <article class="project">
+    <div class="projecttop"><span class="index">02 / PESSOAS & DADOS</span><span class="status">Estudo de caso</span></div>
+    <h3>People Analytics</h3>
+    <p>Conceito de painel para explorar indicadores de equipes, distribuição por departamento e movimentações organizacionais.</p>
+    <div class="tags"><span class="tag">Excel</span><span class="tag">Power BI</span><span class="tag">Indicadores</span></div>
+    <button type="button" onclick="showInfo(this,'Painel de RH planejado para apresentar filtros por departamento, indicadores derivados de dados fictícios e explicações das métricas. A demonstração funcional será construída na próxima etapa.')">Ver escopo do projeto ↗</button>
+   </article>
+
+   <article class="project">
+    <div class="projecttop"><span class="index">03 / OPERAÇÕES</span><span class="status">Estudo de caso</span></div>
+    <h3>Central de chamados de TI</h3>
+    <p>Proposta de service desk com classificação de prioridades, acompanhamento de status e organização do fluxo de atendimento.</p>
+    <div class="tags"><span class="tag">JavaScript</span><span class="tag">Processos</span><span class="tag">Suporte</span></div>
+    <button type="button" onclick="showInfo(this,'A aplicação será estruturada para criar chamados, alterar status, priorizar solicitações e consultar o histórico de atendimento.')">Ver escopo do projeto ↗</button>
+   </article>
+
+   <article class="project">
+    <div class="projecttop"><span class="index">04 / COMÉRCIO DIGITAL</span><span class="status">Estudo de caso</span></div>
+    <h3>E-commerce</h3>
+    <p>Experiência de loja virtual com catálogo, pesquisa de produtos, gerenciamento de carrinho e cálculo de valores.</p>
+    <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+    <button type="button" onclick="showInfo(this,'A aplicação será desenvolvida com catálogo navegável, filtros, carrinho funcional e checkout demonstrativo sem pagamentos reais.')">Ver escopo do projeto ↗</button>
+   </article>
+
+   <article class="project">
+    <div class="projecttop"><span class="index">05 / INTELIGÊNCIA FISCAL</span><span class="status">Estudo de caso</span></div>
+    <h3>Dashboard tributário</h3>
+    <p>Estudo de visualização de dados fiscais, comparação de períodos e indicadores com premissas documentadas.</p>
+    <div class="tags"><span class="tag">Dados</span><span class="tag">SQL</span><span class="tag">Power BI</span></div>
+    <button type="button" onclick="showInfo(this,'O painel deverá utilizar dados fictícios, fórmulas explicadas e filtros que atualizam os indicadores. Não representa apuração tributária oficial.')">Ver escopo do projeto ↗</button>
+   </article>
+
+   <article class="project">
+    <div class="projecttop"><span class="index">06 / GESTÃO JURÍDICA</span><span class="status">Estudo de caso</span></div>
+    <h3>Plataforma jurídica</h3>
+    <p>Conceito de gestão de processos, tarefas, prazos e atividades administrativas com acompanhamento visual.</p>
+    <div class="tags"><span class="tag">ERP / CRM</span><span class="tag">Gestão</span><span class="tag">UX</span></div>
+    <button type="button" onclick="showInfo(this,'A aplicação será planejada para organizar processos fictícios, tarefas, prazos e atividades, com filtros e alertas visuais.')">Ver escopo do projeto ↗</button>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section id="competencias">
+ <div class="wrap">
+  <div class="kicker">Base técnica</div>
+  <h2>Ferramentas e conhecimentos</h2>
+  <p class="sub">Tecnologias e disciplinas relacionadas aos meus estudos e projetos autorais.</p>
+  <div class="skills">
+   <span class="skill">HTML5</span><span class="skill">CSS3</span>
+   <span class="skill">JavaScript</span><span class="skill">SQL</span>
+   <span class="skill">Excel</span><span class="skill">Power BI</span>
+   <span class="skill">Node.js</span><span class="skill">Canva</span>
+   <span class="skill">Gestão de TI</span><span class="skill">Processos de negócio</span>
+  </div>
+ </div>
+</section>
+
+<section id="sobre">
+ <div class="wrap about">
+  <div class="kicker">Perfil</div>
+  <h2>Gestão de negócios e tecnologia.</h2>
+  <p>Minha formação técnica em Administração e minha graduação em Gestão da Tecnologia da Informação orientam meu interesse por sistemas que organizam processos, apoiam decisões e tornam informações mais úteis.</p>
+  <p>Estou desenvolvendo projetos autorais para aprofundar conhecimentos técnicos, documentar decisões e transformar conceitos em demonstrações que possam ser exploradas e avaliadas.</p>
+ </div>
+</section>
+
+<section id="contato">
+ <div class="wrap">
+  <div class="contact">
+   <div class="kicker">Contato profissional</div>
+   <h2>Vamos conversar sobre tecnologia.</h2>
+   <p class="sub">Conheça minha trajetória e acompanhe meus projetos profissionais.</p>
+   <div class="actions">
+    <a class="btn primary" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">Acessar LinkedIn ↗</a>
+    <a class="btn" href="#projetos">Voltar aos projetos ↑</a>
+   </div>
+   <p class="notice">Substitua o endereço genérico do LinkedIn pelo link do seu perfil antes da publicação final.</p>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Emanueli de Souza</span><span>Portfólio autoral de tecnologia</span></div></footer>
+
+<script>
+const stages = ["Prospecção","Qualificação","Proposta","Negociação","Fechado"];
+let opportunities = [
+ {id:1,name:"Automação de processos",company:"Empresa exemplo A",value:8500,stage:"Proposta"},
+ {id:2,name:"Implantação de sistema",company:"Empresa exemplo B",value:4500,stage:"Fechado"},
+ {id:3,name:"Análise de dados",company:"Empresa exemplo C",value:8500,stage:"Qualificação"}
+];
+let nextId = 4;
+
+function money(n){
+ return n.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+}
+function toggleDemo(id,button){
+ const panel=document.getElementById(id);
+ panel.classList.toggle("open");
+ button.textContent=panel.classList.contains("open")?"Fechar demonstração ↑":"Abrir demonstração ↗";
+ if(panel.classList.contains("open"))renderCRM();
+}
+function renderCRM(){
+ const filter=document.getElementById("filter").value;
+ const visible=opportunities.filter(o=>!filter||o.stage===filter);
+ document.getElementById("crmRows").innerHTML=visible.map(o=>`
+ <tr>
+  <td>${escapeHTML(o.name)}</td>
+  <td>${escapeHTML(o.company)}</td>
+  <td>${money(o.value)}</td>
+  <td><select aria-label="Etapa de ${escapeHTML(o.name)}" onchange="changeStage(${o.id},this.value)">
+   ${stages.map(s=>`<option ${s===o.stage?"selected":""}>${s}</option>`).join("")}
+  </select></td>
+  <td><button class="remove" type="button" onclick="removeOpportunity(${o.id})" aria-label="Excluir ${escapeHTML(o.name)}">Excluir</button></td>
+ </tr>`).join("");
+ document.getElementById("count").textContent=opportunities.length;
+ document.getElementById("pipeline").textContent=money(opportunities.reduce((s,o)=>s+o.value,0));
+ document.getElementById("won").textContent=money(opportunities.filter(o=>o.stage==="Fechado").reduce((s,o)=>s+o.value,0));
+}
+function escapeHTML(value){
+ return String(value).replace(/[&<>"']/g,char=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
+}
+function addOpportunity(){
+ const name=document.getElementById("client").value.trim();
+ const company=document.getElementById("company").value.trim();
+ const value=Number(document.getElementById("value").value);
+ const stage=document.getElementById("stage").value;
+ if(!name||!company||document.getElementById("value").value===""||!Number.isFinite(value)||value<0){
+  alert("Preencha o nome, a empresa e um valor válido igual ou maior que zero.");
+  return;
+ }
+ opportunities.push({id:nextId++,name,company,value,stage});
+ document.getElementById("client").value="";
+ document.getElementById("company").value="";
+ document.getElementById("value").value="";
+ renderCRM();
+}
+function changeStage(id,stage){
+ const item=opportunities.find(o=>o.id===id);
+ if(item&&stages.includes(stage)){item.stage=stage;renderCRM();}
+}
+function removeOpportunity(id){
+ const item=opportunities.find(o=>o.id===id);
+ if(!item||!confirm("Excluir esta oportunidade da demonstração?"))return;
+ opportunities=opportunities.filter(o=>o.id!==id);
+ renderCRM();
+}
+function showInfo(button,message){
+ let box=button.nextElementSibling;
+ if(box&&box.classList.contains("notice-detail")){box.remove();button.textContent="Ver escopo do projeto ↗";return;}
+ box=document.createElement("p");
+ box.className="notice notice-detail";
+ box.textContent=message;
+ button.insertAdjacentElement("afterend",box);
+ button.textContent="Ocultar detalhes ↑";
+}
+renderCRM();
+</script>
+</body>
+</html>
